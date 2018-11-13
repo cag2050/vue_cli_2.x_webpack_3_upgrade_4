@@ -6,6 +6,12 @@
 
 vue-cli 3.x 拉取 2.x 模板 (旧版本)：https://cli.vuejs.org/zh/guide/creating-a-project.html#%E6%8B%89%E5%8F%96-2-x-%E6%A8%A1%E6%9D%BF-%E6%97%A7%E7%89%88%E6%9C%AC
 
+* 打包对比
+webpack 3：
+[](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack3.jpg)
+webpack 4：
+[](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack4.jpg)
+
 ## Build Setup
 
 ``` bash
