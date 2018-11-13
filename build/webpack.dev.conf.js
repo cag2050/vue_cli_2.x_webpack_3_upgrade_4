@@ -14,6 +14,7 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
+    mode: 'development',
     module: {
         rules: utils.styleLoaders({sourceMap: config.dev.cssSourceMap, usePostCSS: true})
     },
@@ -49,8 +50,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             'process.env': require('../config/dev.env')
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-        new webpack.NoEmitOnErrorsPlugin(),
+        // 去掉 webpack.NamedModulesPlugin 及 webpack.NoEmitOnErrorsPlugin 插件，因为 webpack4 开发模式已经内置。
+        // new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
+        // new webpack.NoEmitOnErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({
             filename: 'index.html',
