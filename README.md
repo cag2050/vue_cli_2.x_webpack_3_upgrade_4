@@ -8,9 +8,9 @@ vue-cli 3.x 拉取 2.x 模板 (旧版本)：https://cli.vuejs.org/zh/guide/creat
 
 * 打包对比
 webpack 3：
-[](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack3.jpg)
+![](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack3.jpg)
 webpack 4：
-[](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack4.jpg)
+![](https://github.com/cag2050/vue_cli_2.x_webpack_3_upgrade_4/blob/master/src/assets/webpack4.jpg)
 
 ## Build Setup
 
