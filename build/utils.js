@@ -4,6 +4,7 @@ const config = require('../config')
 // const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
+const lodash = require('lodash')
 
 exports.assetsPath = function (_path) {
     const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -19,7 +20,10 @@ exports.cssLoaders = function (options) {
     const cssLoader = {
         loader: 'css-loader',
         options: {
-            sourceMap: options.sourceMap
+            sourceMap: options.sourceMap,
+            // https://vue-loader.vuejs.org/zh/migrating.html#css-modules
+            modules: true,
+            localIdentName: '[local]---[hash:base64:5]'
         }
     }
 
