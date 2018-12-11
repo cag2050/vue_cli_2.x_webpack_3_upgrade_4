@@ -16,6 +16,6 @@ export default {
 </script>
 
 <style lang="stylus" module>
-.blueColor
-    color blue
+    .blueColor
+        color blue
 </style>
