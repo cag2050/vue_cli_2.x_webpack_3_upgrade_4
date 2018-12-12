@@ -20,16 +20,24 @@ const webpackConfig = merge(baseWebpackConfig, {
     // webpack4 内置
     optimization: {
         splitChunks: {
+            // 默认为 async，把动态模块打包进 vendor，非动态模块保持原样（不优化）(动态模块，即按需加载的模块：是指使用了import()的模块)
+            // chunks的3个值介绍：https://www.cnblogs.com/cag2050/p/10109898.html
+            // chunks: 'async',
+            // minSize: 30000,
+            // minChunks: 1,
+            // maxAsyncRequests: 5,
+            // maxInitialRequests: 3,
+            // automaticNameDelimiter: '~',
+            // name: true,
             // cacheGroups: {
             //     vendors: {
             //         test: /[\\/]node_modules[\\/]/,
-            //         chunks: 'initial',
-            //         name: 'vendors',
+            //         priority: -10
             //     },
-            //     'async-vendors': {
+            //     default: {
             //         minChunks: 2,
-            //         chunks: 'async',
-            //         name: 'async-vendors'
+            //         priority: -20,
+            //         reuseExistingChunk: true
             //     }
             // }
         },
