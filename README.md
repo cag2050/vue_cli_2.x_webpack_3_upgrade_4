@@ -2,7 +2,8 @@
 
 > A Vue.js project
 
-### 配置参考：https://juejin.im/post/5b0a6d366fb9a07aa213d16a
+### 配置参考：
+https://juejin.im/post/5b0a6d366fb9a07aa213d16a
 
 vue-cli 3.x 拉取 2.x 模板 (旧版本)：https://cli.vuejs.org/zh/guide/creating-a-project.html#%E6%8B%89%E5%8F%96-2-x-%E6%A8%A1%E6%9D%BF-%E6%97%A7%E7%89%88%E6%9C%AC
 

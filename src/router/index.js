@@ -9,12 +9,12 @@ export default new Router({
         {
             path: '/',
             name: 'HelloWorld',
-            component: () => import('@/components/HelloWorld.vue')
+            component: () => import(/* webpackChunkName: 'HelloWorld' */ '@/components/HelloWorld.vue')
         },
         {
             path: '/test',
             name: '',
-            component: () => import('@/views/Test.vue')
+            component: () => import(/* webpackChunkName: 'Test' */'@/views/Test.vue')
         }
     ]
 })

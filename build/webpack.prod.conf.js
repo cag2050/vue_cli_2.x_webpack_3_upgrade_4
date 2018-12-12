@@ -20,21 +20,23 @@ const webpackConfig = merge(baseWebpackConfig, {
     // webpack4 内置
     optimization: {
         splitChunks: {
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: 'initial',
-                    name: 'vendors',
-                },
-                'async-vendors': {
-                    test: /[\\/]node_modules[\\/]/,
-                    minChunks: 2,
-                    chunks: 'async',
-                    name: 'async-vendors'
-                }
-            }
+            // cacheGroups: {
+            //     vendors: {
+            //         test: /[\\/]node_modules[\\/]/,
+            //         chunks: 'initial',
+            //         name: 'vendors',
+            //     },
+            //     'async-vendors': {
+            //         minChunks: 2,
+            //         chunks: 'async',
+            //         name: 'async-vendors'
+            //     }
+            // }
         },
-        runtimeChunk: {name: 'runtime'}
+        // 此配置项产生的文件，描述了哪些文件需要 webpack 加载
+        runtimeChunk: {
+            name: 'manifest'
+        }
     },
     module: {
         rules: utils.styleLoaders({
