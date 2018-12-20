@@ -6,7 +6,7 @@
 1. 安装docker
 2. 下载nginx镜像（`[:tag]`：是具体的nignx版本，比如：`:1.15.7`；默认从 https://hub.docker.com/ 下载镜像）：
 ```
-git pull nginx[:tag]
+docker pull nginx[:tag]
 ```
 3. 运行命令打包项目：`npm run build`
 4. 编写nginx的配置文件（文件在本项目中位置：`nginx/default.conf`）
@@ -22,7 +22,7 @@ docker run -p 9081:80 -v $PWD/dist/:/usr/share/nginx/dist/ -v $PWD/nginx/default
 --- | ---
 -v, --volume value：Bind mount a volume (default []) | 宿主机会覆盖容器内文件
 -p, --publish value：Publish a container's port(s) to the host (default []) | 宿主机端口对应容器内端口
--d, --detach：Run container in background and print container ID | 保持容器在后台持续运行；后续可以使用`docker exec -it <容器名|容器id> bash`进入容器的bash命令
+-d, --detach：Run container in background and print container ID | 保持容器在后台持续运行；后续可以使用`docker exec -it <容器名|容器id> bash`，进入容器的bash命令
 
 ### 配置参考：
 https://juejin.im/post/5b0a6d366fb9a07aa213d16a
