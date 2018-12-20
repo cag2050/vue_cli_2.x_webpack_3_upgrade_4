@@ -2,6 +2,28 @@
 
 > A Vue.js project
 
+### 将vue spa项目运行在docker的nginx容器中，步骤：
+1. 安装docker
+2. 下载nginx镜像（`[:tag]`：是具体的nignx版本，比如：`:1.15.7`；默认从 https://hub.docker.com/ 下载镜像）：
+```
+git pull nginx[:tag]
+```
+3. 运行命令打包项目：`npm run build`
+4. 编写nginx的配置文件（文件在本项目中位置：`nginx/default.conf`）
+5. 在当前目录下运行 docker 命令（`[:tag]`部分，需要替换成具体的值）：
+```
+docker run -p 9081:80 -v $PWD/dist/:/usr/share/nginx/dist/ -v $PWD/nginx/default.conf:/etc/nginx/conf.d/default.conf -d nginx[:tag]
+```
+6. 宿主机（就是本机）访问项目网址：http://localhost:9081/
+
+### `docker run`命令参数说明：
+
+参数 | 说明
+--- | ---
+-v, --volume value：Bind mount a volume (default []) | 宿主机会覆盖容器内文件
+-p, --publish value：Publish a container's port(s) to the host (default []) | 宿主机端口对应容器内端口
+-d, --detach：Run container in background and print container ID | 保持容器在后台持续运行；后续可以使用`docker exec -it <容器名|容器id> bash`进入容器的bash命令
+
 ### 配置参考：
 https://juejin.im/post/5b0a6d366fb9a07aa213d16a
 
