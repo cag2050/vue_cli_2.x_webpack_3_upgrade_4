@@ -2,6 +2,46 @@
 
 > A Vue.js project
 
+### 此项目实现功能：
+1. webpack 升级到 4.x
+2.
+3. 将vue spa项目运行在docker的nginx容器中
+
+### webpack 升级到 4.x 配置参考：
+https://juejin.im/post/5b0a6d366fb9a07aa213d16a
+
+### 上线后程序刷新一次浏览器，来使用新上线资源
+* 修改的地方：
+1. 相应目录下，新建文件：static/json/build_str.json
+2. build/build.js 修改：
+```
+// 将当前时间戳写入json文件
+let json_obj = {"build_str": new Date().getTime().toString()}
+fs.writeFile(path.resolve(__dirname, '../static/json/build_str.json'), JSON.stringify(json_obj), function (err) {
+    if (err) {
+        return console.error(err);
+    }
+    console.log("打包字符串写入文件：static/json/build_str.json，成功！");
+    realBuild()
+})
+```
+3. src/main.js 修改：
+```
+router.beforeEach((to, from, next) => {
+    axios.get('/static/json/build_str.json?v=' + new Date().getTime().toString())
+        .then(res => {
+            let newBuildStr = res.data.build_str
+            let oldBuildStr = localStorage.getItem('build_str') || ''
+            if (oldBuildStr !== newBuildStr) {
+                console.log('auto refresh')
+                localStorage.setItem('build_str', newBuildStr)
+                location.reload()
+            }
+        })
+    next()
+})
+```
+
 ### 将vue spa项目运行在docker的nginx容器中，步骤：
 1. 安装docker
 2. 下载nginx镜像（`[:tag]`：是具体的nignx版本，比如：`:1.15.7`；默认从 https://hub.docker.com/ 下载镜像）：
@@ -24,10 +64,7 @@ docker run -p 9081:80 -v $PWD/dist/:/usr/share/nginx/dist/ -v $PWD/nginx/default
 -p, --publish value：Publish a container's port(s) to the host (default []) | 宿主机端口对应容器内端口
 -d, --detach：Run container in background and print container ID | 保持容器在后台持续运行；后续可以使用`docker exec -it <容器名|容器id> bash`，进入容器的bash命令
 
-### 配置参考：
-https://juejin.im/post/5b0a6d366fb9a07aa213d16a
-
-vue-cli 3.x 拉取 2.x 模板 (旧版本)：https://cli.vuejs.org/zh/guide/creating-a-project.html#%E6%8B%89%E5%8F%96-2-x-%E6%A8%A1%E6%9D%BF-%E6%97%A7%E7%89%88%E6%9C%AC
+* vue-cli 3.x 拉取 2.x 模板 (旧版本)：https://cli.vuejs.org/zh/guide/creating-a-project.html#%E6%8B%89%E5%8F%96-2-x-%E6%A8%A1%E6%9D%BF-%E6%97%A7%E7%89%88%E6%9C%AC
 
 ### 此项目（webpack 4、vue-loader 15）配置了 Css Modules后，不能用id选择器了（虽然css modules不推荐用id选择器），先只用class类选择器，此问题待解决
 
