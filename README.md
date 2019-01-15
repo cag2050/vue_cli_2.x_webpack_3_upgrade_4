@@ -18,7 +18,7 @@ spa项目新上线后，登陆有效期内用户，可以马上使用新上线�
 * 实现步骤：
 1. 打包时产生一个json文件：static/json/build_str.json
 2. localStorage中存入值：build_str
-3. 每个路由切换时，从接口获得新打包后json中的字符串，与localStorage中存的上次打包字符串比较，不同时刷新
+3. 每个路由切换时，从接口获得新打包后json中的字符串，与localStorage中存的上次打包字符串比较，不相同时刷新
 * 代码修改的地方：
 1. 相应目录下，新建文件：static/json/build_str.json
 2. build/build.js 修改：
