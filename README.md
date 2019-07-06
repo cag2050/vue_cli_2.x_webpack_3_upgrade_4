@@ -11,6 +11,7 @@
 https://juejin.im/post/5b0a6d366fb9a07aa213d16a
 
 ### 上线后程序刷新一次浏览器，来使用新上线资源
+> 此解决方案不是最佳，请用最佳方案：nginx配置来实现：https://github.com/ant-design/ant-design-pro/issues/1365#issuecomment-384496088
 * 解决了什么问题？
 spa项目新上线后，登陆有效期内用户，可以马上使用新上线资源。
 * 原理：
